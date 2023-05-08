@@ -1,0 +1,20 @@
+#user {{ nginx_user_name }};
+#worker_processes 1;
+
+# error_log  /var/logs/nginx/error.log warn;
+# pid /var/run/nginx.pid;
+
+events {
+  worker_connections    1024;
+}
+
+http {
+    
+    server {
+        listen  80;
+        location / {
+            root {{ lighthouse_location_dir }};
+            index  index.html;
+        }
+    }
+}
